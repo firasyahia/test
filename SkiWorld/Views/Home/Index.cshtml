@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.databales.net/1.10.13/css/jquery.dataTables.min.css"/>
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div >
+        <table id="myDatatable">
+            <thread>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Picture</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                </tr>
+            </thread>
+        </table>
+    </div>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        var oTable = $('#myDatatable').DataTable({
+        "ajax": {
+            "url" : '/home/GetAds',
+            "type" : "get",
+            "datatye" : "json"
+        },
+        "columns": [
+            { "data": "Title", "autoWidth": true },
+            { "data": "Description", "autoWidth": true },
+            { "data": "Picture", "autoWidth": true },
+            { "data": "Type", "autoWidth": true },
+            { "data": "Price", "autoWidth": true }
+        ]
+
+            })
+        })
+    </script>
+    
+</body>
+</html>
